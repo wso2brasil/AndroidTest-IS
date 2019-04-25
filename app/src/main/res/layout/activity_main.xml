@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="Login"
+        android:text="id"
         android:textSize="30sp"
         android:textAlignment="center"/>
 
@@ -23,7 +23,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="Password"
+        android:text="senha"
         android:textSize="30sp"
         android:textAlignment="center"/>
 
@@ -36,11 +36,11 @@
         android:id="@+id/button_signin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sing In"/>
+        android:text="entrar"/>
 
     <Button
         android:id="@+id/button_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"/>
+        android:text="Cadastre-se"/>
 </LinearLayout>
