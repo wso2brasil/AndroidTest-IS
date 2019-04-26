@@ -8,4 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Wso2Theme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimaryWso2</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryWso2</item>
+        <item name="colorAccent">@color/colorPrimaryOrangeWSO2</item>
+        <item name="android:buttonStyle">@style/ButtonText</item>
+        <item name="android:textColor">@color/colorPrimaryOrangeWSO2</item>
+    </style>
+
+    <style name="ButtonText" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/colorPrimaryOrangeWSO2</item>
+        <item name="android:background">@android:drawable/btn_default</item><!-- only way to change this is to change the src image -->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
 </resources>
