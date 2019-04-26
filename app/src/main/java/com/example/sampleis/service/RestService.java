@@ -32,8 +32,8 @@ import javax.security.cert.X509Certificate;
 public class RestService {
 
     private static String URL_AUTH = "https://10.0.2.2:9443/api/identity/auth/v1.1/authenticate";
-    private static String CLIENT_ID = "hxeDY775u13gNxXt4x_oFXHX69oa";
-    private static String CLIENT_SECRET = "He8Y2apncV9iiF_rOw1T2NbCdToa";
+    private static String CLIENT_ID = "Hot31mSP_frSZfb91UIQLdHl1rsa";
+    private static String CLIENT_SECRET = "DUam6EGdMmHmhKjBPt_G5XgtNFQa";
     private static String URL_OAUTH2 = "https://10.0.2.2:9443/oauth2/token";
     private static String URL_USER_IDENTITY = "https://10.0.2.2:9443/api/identity/user/v1.0/me";
     private static String URL_CREATE_USER = "http://10.0.2.2:8281/register";

@@ -18,7 +18,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
+<<<<<<< HEAD
+        android:text="id"
+=======
         android:text="Usuário"
+>>>>>>> a101944f689d011d72fb1cfc9c7554226245df19
         android:textSize="30sp"
         android:textAlignment="center"/>
 
@@ -30,7 +34,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
+<<<<<<< HEAD
+        android:text="senha"
+=======
         android:text="Senha"
+>>>>>>> a101944f689d011d72fb1cfc9c7554226245df19
         android:textSize="30sp"
         android:textAlignment="center"/>
 
@@ -43,13 +51,21 @@
         android:id="@+id/button_signin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
+        android:text="entrar"/>
+=======
         android:text="Login"/>
+>>>>>>> a101944f689d011d72fb1cfc9c7554226245df19
 
     <Button
         android:id="@+id/button_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
+        android:text="Cadastre-se"/>
+=======
         android:text="Registrar"/>
 
 
+>>>>>>> a101944f689d011d72fb1cfc9c7554226245df19
 </LinearLayout>
