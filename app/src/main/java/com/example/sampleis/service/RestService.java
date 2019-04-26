@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
@@ -35,6 +36,7 @@ public class RestService {
     private static String CLIENT_SECRET = "He8Y2apncV9iiF_rOw1T2NbCdToa";
     private static String URL_OAUTH2 = "https://10.0.2.2:9443/oauth2/token";
     private static String URL_USER_IDENTITY = "https://10.0.2.2:9443/api/identity/user/v1.0/me";
+    private static String URL_CREATE_USER = "http://10.0.2.2:8281/register";
     public static String TOKEN = null;
     public static String ACCESS_TOKEN = null;
 
@@ -207,6 +209,29 @@ public class RestService {
         return false;
     }
 
+
+    public boolean createNewUserESB(JSONObject user) {
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                .permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        HttpURLConnection con = getConnectionHttp(URL_CREATE_USER, "POST", null);
+
+        try {
+            DataOutputStream dos = new DataOutputStream(con.getOutputStream());
+            dos.write(user.toString().getBytes());
+
+            if (con.getResponseCode() >= 200 && con.getResponseCode() < 300) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
     public String getUserInfo() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .permitAll().build();
@@ -271,6 +296,22 @@ public class RestService {
         return json;
     }
 
+    public JSONObject createNewJsonUser(String username, String password, String givenName, String emailAddress, String lastName, String mobile) {
+        JSONObject user = new JSONObject();
+        try {
+            user.put("username", username);
+            user.put("password", password);
+            user.put("givenname", givenName);
+            user.put("email", emailAddress);
+            user.put("lastname", lastName);
+            user.put("mobile", mobile);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+
     private HttpsURLConnection getConnection(String urlString, String HttpMethod, String contentType) {
         HttpsURLConnection connection = null;
         URL url;
@@ -281,6 +322,28 @@ public class RestService {
             url = new URL(urlString);
             connection = (HttpsURLConnection) url.openConnection();
             connection.setHostnameVerifier(org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+
+            connection.setRequestMethod(HttpMethod);
+            connection.setRequestProperty("Accept", "application/json");
+            connection.setRequestProperty("Content-Type", contentType);
+
+            connection.setDoInput(true);
+            connection.setDoOutput(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return connection;
+    }
+
+    private HttpURLConnection getConnectionHttp(String urlString, String HttpMethod, String contentType) {
+        HttpURLConnection connection = null;
+        URL url;
+        if (contentType == null || contentType.isEmpty()) {
+            contentType = "application/json";
+        }
+        try {
+            url = new URL(urlString);
+            connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod(HttpMethod);
             connection.setRequestProperty("Accept", "application/json");
