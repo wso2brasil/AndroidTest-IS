@@ -30,14 +30,14 @@ public class Register extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JSONObject jsonUser = rs.createJsonUser(username.getText().toString(),
+                JSONObject jsonUser = rs.createNewJsonUser(username.getText().toString(),
                         password.getText().toString(),
                         givenname.getText().toString(),
                         email.getText().toString(),
                         lastname.getText().toString(),
                         mobile.getText().toString());
 
-                boolean created = rs.createNewUser(jsonUser);
+                boolean created = rs.createNewUserESB(jsonUser);
 
                 if (created) {
                     Toast.makeText(Register.this, "O usuário foi criado com sucesso!", Toast.LENGTH_SHORT).show();
